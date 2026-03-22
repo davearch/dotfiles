@@ -1,7 +1,7 @@
-;;; .emacs --- Summary -*- lexical-binding: t -*-
+;;; init.el --- Summary -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;;; This is David's .emacs file :)
+;;; This is David's Emacs initialization file :)
 
 ;;; Code:
 
@@ -488,4 +488,4 @@
 (if (file-exists-p custom-file)
     (load-file custom-file))
 
-;;; .emacs ends here
+;;; init.el ends here
