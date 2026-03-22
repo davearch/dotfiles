@@ -121,8 +121,9 @@
  make-backup-files nil
  inhibit-startup-message t
  auto-save-default nil
- set-mark-command-repeat-pop t)
-					; global-auto-revert-non-file-buffers t)
+ set-mark-command-repeat-pop t
+ global-auto-revert-non-file-buffers t
+ auto-revert-verbose nil)
 
 
 ;;; Packages -----------------
@@ -133,7 +134,7 @@
 	 ("C-c i" . blamer-show-postframe-commit-info))
   :defer 20
   :custom
-  (blamer-idle-time 0)
+  (blamer-idle-time 0.3)
   (blamer-min-offset 40)
   :custom-face
   (blamer-face ((t :foreground "#7a88cf"
@@ -142,7 +143,7 @@
 		   :italic t)))
   :config
   (global-blamer-mode 1)
-  (setq blamer-type 'both))
+  (setq blamer-type 'margin-overlay))
 
 (use-package ivy
   :init (ivy-mode)

@@ -12,10 +12,10 @@
      default))
  '(package-selected-packages
    '(ace-jump-mode apheleia blamer claude-code-ide corfu counsel
-                   doom-modeline eat flycheck helpful ivy-rich lsp-ui
-                   modus-themes multi-vterm multiple-cursors paredit
-                   projectile rainbow-delimiters which-key
-                   zenburn-theme)))
+		   doom-modeline eat flycheck helpful ivy-rich lsp-ui
+		   magit modus-themes multi-vterm multiple-cursors
+		   paredit projectile rainbow-delimiters which-key
+		   zenburn-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
