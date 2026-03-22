@@ -7,6 +7,18 @@
 
 ;;; Basic Configs -------------
 
+(defmacro backwards (expr)
+  "Reverse the order of EXPR, including reversing chars in any string."
+  (reverse (mapcar (lambda (x)
+		     (if (stringp x)
+			 (concat (reverse (string-to-list x)))
+		       x))
+		   expr)))
+
+(defun display-startup-echo-area-message ()
+  "Call the backwards macro to display a custom echo area message."
+  (message (backwards ("!dlrow ,olleh" format))))
+
 (add-to-list 'load-path "~/slime")
 (global-display-line-numbers-mode t)
 (require 'slime-autoloads)
@@ -109,8 +121,8 @@
  make-backup-files nil
  inhibit-startup-message t
  auto-save-default nil
- set-mark-command-repeat-pop t
- global-auto-revert-non-file-buffers t)
+ set-mark-command-repeat-pop t)
+					; global-auto-revert-non-file-buffers t)
 
 
 ;;; Packages -----------------
