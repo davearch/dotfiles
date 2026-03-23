@@ -194,6 +194,10 @@
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package vterm
+  :ensure t
+  :bind
+  ("C-c C-v" . vterm))
 (use-package multi-vterm :ensure t)
 
 (require 'multiple-cursors)
@@ -212,8 +216,8 @@
 (use-package claude-code-ide
   :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
   :bind
-  ("C-c C-'" . claude-code-ide-menu)
-  ("C-c C-l" . claude-code-ide-insert-at-mentioned)
+  ("C-c C-o" . claude-code-ide-menu)
+  ("C-c C-u" . claude-code-ide-insert-at-mentioned)
   :config
   (claude-code-ide-emacs-tools-setup))
 
