@@ -20,6 +20,10 @@
   (message (backwards ("!dlrow ,olleh" format))))
 
 (add-to-list 'load-path "~/slime")
+;; Melpa
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 (global-display-line-numbers-mode t)
 (require 'slime-autoloads)
 (tool-bar-mode -1)
