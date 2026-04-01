@@ -34,6 +34,19 @@
 (show-paren-mode)
 (display-time-mode 1)
 
+;; Auto-complete for org babel code snippets.
+(require 'org-tempo)
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("el" . "src python"))
+
+;; Disable line numbers for some modes.
+(dolist (modde '(org-mode-hook
+		 term-mode-hook
+		 shell-mode-hook
+		 eshell-mode-hook))
+  (add-hook (lambda () (display-line-numbers-mode 0))))
+
 ;; Tabs to spaces
 ;; (setq-default indent-tabs-mode nil
 ;; 	            tab-width 2)
@@ -57,70 +70,8 @@
   (set-frame-parameter (selected-frame) 'alpha 93)
   (add-to-list 'default-frame-alist '(alpha . 93)))
 
-;; (setq default-directory (getenv "HOME"))
-;; (use-package exec-path-from-shell
-;;   :config
-;;   (dolist (var '("PATH" "LSP_USE_PLISTS"))
-;;     (add-to-list 'exec-path-from-shell-variables var))
-;;   (exec-path-from-shell-initialize))
 
-;; (defun dw/apply-ayu-dark-style ()
-;;   (interactive)
-;;   (setopt modus-themes-italic-constructs t
-;;           modus-themes-bold-constructs t
-;;           modus-themes-common-palette-overrides
-;;           `((bg-main "#0F111B")
-;;             (bg-active bg-main)
-;;             (fg-main "#C3CCDF")
-;;             (fg-active fg-main)
-;;             (fringe unspecified)
-;;             (border-mode-line-active unspecified)
-;;             (border-mode-line-inactive unspecified)
-;;             (fg-mode-line-active "#B3B1AD")
-;;             (bg-mode-line-active "#171B27")
-;;             (fg-mode-line-inactive "#65737E")
-;;             (bg-mode-line-inactive "#1C1F29")
-;;             (bg-tab-bar      "#1C1F29")
-;;             (bg-tab-current  bg-main)
-;;             (bg-tab-other    "#171B27")
-;;             (fg-prompt "#F6C177")
-;;             (bg-prompt unspecified)
-;;             (bg-hover-secondary "#65737E")
-;;             (bg-completion "#2f447f")
-;;             (fg-completion "#ffffff")
-;;             (bg-region "#2B2E36")
-;;             (fg-region "#ffffff")
 
-;;             ;; Heading colors
-;;             (fg-heading-0 "#81A1C1")
-;;             (fg-heading-1 "#81A1C1")
-;;             (fg-heading-2 "#F6C177")
-;;             (fg-heading-3 "#FFB974")
-;;             (fg-heading-4 "#C792EA")
-
-;;             (fg-prose-verbatim "#A3BE8C")
-;;             (bg-prose-block-contents "#171B27")
-;;             (fg-prose-block-delimiter "#65737E")
-;;             (bg-prose-block-delimiter "#171B27")
-
-;;             (accent-1 "#7FDBCA")
-
-;;             (keyword   "#F6C177")
-;;             (builtin   "#81A1C1")
-;;             (comment   "#65737E")
-;;             (string    "#A3BE8C")
-;;             (fnname    "#7FDBCA")
-;;             (type      "#C792EA")
-;;             (variable  "#FFB974")
-;;             (docstring "#8996A2")
-;;             (constant  "#F07178"))))
-
-(use-package modus-themes
-  :ensure nil
-  :demand t
-  :init
-  (load-theme 'modus-vivendi-tinted t))
-;;(dw/apply-ayu-dark-style)
 
 (setq
  inferior-lisp-program "/opt/homebrew/bin/sbcl"
@@ -139,6 +90,15 @@
 
 
 ;;; Packages ------------------
+
+;; Make sure fonts are installed first: M-x all-the-icons-install-fonts
+(use-package all-the-icons)
+
+(use-package modus-themes
+  :ensure nil
+  :demand t
+  :init
+  (load-theme 'modus-vivendi-tinted t))
 
 (use-package blamer
   :ensure t
@@ -196,6 +156,9 @@
   :bind-keymap
   ("C-c p" . projectile-command-map))
 
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
@@ -232,6 +195,10 @@
   ("C-c C-u" . claude-code-ide-insert-at-mentioned)
   :config
   (claude-code-ide-emacs-tools-setup))
+
+;; (use-package forge
+;;   :after magit)
+;; (setq auth-sources '("~/.authinfo"))
 
 (use-package treesit
   :mode (("\\.tsx\\'" . tsx-ts-mode)
