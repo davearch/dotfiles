@@ -13,11 +13,11 @@
  '(package-selected-packages
    '(ace-jump-mode all-the-icons apheleia blamer claude-code-ide corfu
 		   counsel counsel-projectile doom-modeline eat
-		   exec-path-from-shell flycheck helpful ht ivy-rich
-		   lsp-mode lsp-ui lv magit markdown-mode modus-themes
-		   multi-vterm multiple-cursors paredit projectile
-		   rainbow-delimiters spinner typescript-mode
-		   which-key yasnippet zenburn-theme)))
+		   exec-path-from-shell flycheck forge helpful ht
+		   ivy-rich lsp-mode lsp-ui lv magit markdown-mode
+		   modus-themes multi-vterm multiple-cursors paredit
+		   projectile rainbow-delimiters spinner
+		   typescript-mode which-key yasnippet zenburn-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

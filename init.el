@@ -196,9 +196,9 @@
   :config
   (claude-code-ide-emacs-tools-setup))
 
-;; (use-package forge
-;;   :after magit)
-;; (setq auth-sources '("~/.authinfo"))
+(use-package forge
+  :after magit)
+(setq auth-sources '("~/.authinfo"))
 
 (use-package treesit
   :mode (("\\.tsx\\'" . tsx-ts-mode)
